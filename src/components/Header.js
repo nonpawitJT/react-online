@@ -1,10 +1,11 @@
 import React from 'react'
+import Button from '../styles/button/Button'
+import Title from '../styles/title/Title'
 import Logo from './Logo'
 
 const Header = () => {
     let companyName = "TNI"
-    const companyAdress = <p>Bangkok</p>
-    let number = 10
+
 
     const showMessage = () => {
 
@@ -28,6 +29,7 @@ const Header = () => {
 
     return (
         <div>
+            <Title>Project React</Title>
             <h1>Hello {showMessage()}</h1>
 
            {
@@ -46,6 +48,8 @@ const Header = () => {
             { isLogin ? <Logo/> : <p>Unlock</p>} 
 
          <button onClick = {showMe}>Click Me</button>
+         <Button keyword ="correct" onClick = {showMe}>Click Me</Button>
+         <Button keyword ="no" onClick = {showMe}>Click Me</Button>
 
           <ul>
            { products.map((product,index)=> {

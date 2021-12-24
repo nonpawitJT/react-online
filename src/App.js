@@ -10,6 +10,8 @@ import {
   Link
 } from "react-router-dom";
 import Aboutpage from "./pages/Aboutpage";
+import ProductPage from "./pages/ProductPage";
+import DetailPage from "./pages/DetailPage";
 
 function App() {  
   return (
@@ -18,6 +20,8 @@ function App() {
       <Switch>
         <Route exact path='/'><Homepage/></Route>
         <Route path='/about'><Aboutpage/></Route>
+        <Route path='/product'><ProductPage/></Route>
+        <Route path='/detail'><DetailPage/></Route>
       </Switch>
       <Footer/>
  

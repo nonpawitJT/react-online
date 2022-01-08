@@ -1,7 +1,9 @@
 import React from 'react'
-import { Table, Image, Badge, Spinner,Button } from "react-bootstrap"
+import { Table, Image, Badge, Spinner, Button } from "react-bootstrap"
 import axios from 'axios'
 import { BsFillMouseFill } from "react-icons/bs";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
+
 const ProductPage = () => {
 
     const [product, setProduct] = React.useState([])
@@ -17,14 +19,14 @@ const ProductPage = () => {
             // console.log(eror.response)
             setError(error)
         }
-        finally{
+        finally {
             setLoading(false) //หยุดตรงนี้ทุกกรณี
         }
     }
 
     React.useEffect(() => {
         getData()
-    },[])
+    }, [])
 
     if (loading === true) {
         return (
@@ -70,7 +72,12 @@ const ProductPage = () => {
                                             <td>{p.date}</td>
                                             <td> <Badge variant="success">{p.view}</Badge></td>
                                             <td> <Image src={p.picture} rounded width={60} /> </td>
-                                            <td><Button href='/detail' variant="outline-info">Click <BsFillMouseFill color="outline-info" size="1em"/></Button>{' '}</td>
+                                            <td>
+                                                <Link to={`/detail/${p.id}/title/${p.title}`}>
+                                                    <Button variant="outline-primary">Click <BsFillMouseFill color='primary'/></Button>
+                                                </Link>
+                                            </td>
+
                                         </tr>
 
                                     )

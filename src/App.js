@@ -14,6 +14,7 @@ import ProductPage from "./pages/ProductPage";
 import DetailPage from "./pages/DetailPage";
 import Contactus from "./pages/Contactus";
 import HospitalPage from "./pages/Hospital/HospitalPage";
+import IndexPage from "./pages/category/IndexPage";
 
 function App() {  
   return (
@@ -25,6 +26,8 @@ function App() {
         <Route path='/product'><ProductPage/></Route>
         <Route path='/detail/:id/title/:title'><DetailPage/></Route>
         <Route path='/hospital'><HospitalPage/></Route>
+        <Route path='/category'><IndexPage/></Route>
+
       </Switch>
       <Footer/>
  

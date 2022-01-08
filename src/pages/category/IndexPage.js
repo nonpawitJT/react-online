@@ -1,14 +1,14 @@
 import React from 'react'
 import { Table, Spinner, Button } from 'react-bootstrap';
 import axios from 'axios';
-import {
-    BsFillTrashFill, BsFillPencilFill
-} from "react-icons/bs"
+import {  BsFillTrashFill, BsFillPencilFill} from "react-icons/bs"
+import {Link,useHistory } from 'react-router-dom'
 
 const IndexPage = () => {
     const [Category, setCategory] = React.useState([])
     const [loading, setLoading] = React.useState([false])
     const [error, setError] = React.useState()
+    const history = useHistory();
 
 
     const getData = async () => {
@@ -50,7 +50,8 @@ const IndexPage = () => {
         <div className="container">
             <div className="row">
                 <div className="col-md-12 mt-4">
-                    <h2>Index Page</h2>
+                    <Button variant='success' className="mb-3" onClick={() => { history.push('/category/create') }}>+ Add New Category</Button>
+                    <h2>Category</h2>
                     <Table striped bordered hover>
                         <thead>
                             <tr>

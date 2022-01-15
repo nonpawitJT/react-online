@@ -6,6 +6,8 @@ import * as yup from "yup";
 import axios from 'axios';
 import {useHistory,useParams} from 'react-router-dom';
 
+import {  useToasts } from 'react-toast-notifications';
+
 const schema = yup.object({
     name: yup.string().required('Category news cannot ne null'),
   }).required();
@@ -18,6 +20,7 @@ const EditPage = () => {
 
     const history = useHistory();
     const { id } = useParams()
+    const {addToast} = useToasts()
     const getData = async(id) => {
         const response = await axios.get('https://api.codingthailand.com/api/category/' + id)
         console.log(response.data)
@@ -30,7 +33,8 @@ const EditPage = () => {
                 id : id,
                 name: data.name,
               });
-              alert(resp.data.message)
+            //   alert(resp.data.message)
+            addToast(resp.data.message ,{appearance:'success',autoDismiss:true })
               history.replace('/category')
         }catch(error){
             console.log(error.response)

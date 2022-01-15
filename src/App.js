@@ -17,9 +17,12 @@ import HospitalPage from "./pages/Hospital/HospitalPage";
 import IndexPage from "./pages/category/IndexPage";
 import CreatePage from "./pages/category/CreatePage";
 import EditPage from "./pages/category/EditPage";
+import UploadPage from "./pages/UploadPage";
+import { ToastProvider } from 'react-toast-notifications';
 
 function App() {  
   return (
+    <ToastProvider placement="top-center">
     <Router>
       <NavBar/>
       <Switch>
@@ -28,6 +31,8 @@ function App() {
         <Route path='/product'><ProductPage/></Route>
         <Route path='/detail/:id/title/:title'><DetailPage/></Route>
         <Route path='/hospital'><HospitalPage/></Route>
+        <Route path='/upload'><UploadPage/></Route>
+        
          {/*<Route path='/category'><indexPage/></Route>*/}
          <Route path='/category' render={ ({match : {url}}) => (
             <>
@@ -41,6 +46,7 @@ function App() {
       <Footer/>
  
     </Router>
+    </ToastProvider>
   );
 }
 

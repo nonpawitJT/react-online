@@ -19,6 +19,8 @@ import CreatePage from "./pages/category/CreatePage";
 import EditPage from "./pages/category/EditPage";
 import UploadPage from "./pages/UploadPage";
 import { ToastProvider } from 'react-toast-notifications';
+import RegisterPage from "./pages/RegisterPage";
+import LoginPage from "./pages/LoginPage";
 
 function App() {  
   return (
@@ -32,6 +34,9 @@ function App() {
         <Route path='/detail/:id/title/:title'><DetailPage/></Route>
         <Route path='/hospital'><HospitalPage/></Route>
         <Route path='/upload'><UploadPage/></Route>
+        <Route path='/register'><RegisterPage/></Route>
+        <Route path='/login'><LoginPage/></Route>
+
         
          {/*<Route path='/category'><indexPage/></Route>*/}
          <Route path='/category' render={ ({match : {url}}) => (

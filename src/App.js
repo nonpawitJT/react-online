@@ -23,9 +23,11 @@ import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
 import MemberPage from "./pages/MemberPage";
 import PrivateRoute from "./Guard/auth";
+import UserStoreProvider from "./context/UserContext";
 
 function App() {  
   return (
+    <UserStoreProvider>
     <ToastProvider placement="top-center">
     <Router>
       <NavBar/>
@@ -55,6 +57,7 @@ function App() {
  
     </Router>
     </ToastProvider>
+    </UserStoreProvider>
   );
 }
 

@@ -16,6 +16,12 @@ const NavBar = () => {
   React.useEffect(()=>{
     getProfile()
   },[])
+  const logout = () => {
+    localStorage.removeItem('token')
+    localStorage.removeItem('profile')
+    history.replace('/')
+    history.go(0)
+  }
   return (
     <div>
       <Navbar bg="light" expand="lg">
@@ -40,12 +46,13 @@ const NavBar = () => {
             </NavDropdown>
 
             <NavLink className="nav-link" activeClassName="active" to="/upload" >Upload</NavLink>
+            <NavLink className="nav-link" activeClassName="active" to="/member" >Member</NavLink>
           </Nav>
        
           {
             profile ?(
               <span className="nav-text">Welcome {profile.name} 
-              <button className="btn btn-danger ml-2">Logout</button></span>
+              <button className="btn btn-danger ml-2" onClick={logout}>Logout</button></span>
 
             ):(
               <>

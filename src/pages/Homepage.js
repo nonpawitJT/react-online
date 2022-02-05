@@ -1,6 +1,21 @@
 import React from 'react'
 import {FaGithubAlt} from 'react-icons/fa'
+import {UserStoreContext} from '../context/UserContext';
 const Homepage = () => {
+  const userStore = React.useContext(UserStoreContext)
+  // const [profile,setProfile]= React.useState(null)
+  const getProfile =() =>{
+  //   localStorage.getItem('profile')
+    const profileValue = JSON.parse(localStorage.getItem('profile'))
+     if(profileValue){
+  //     setProfile(profileValue)
+    userStore.updateProfile(profileValue)
+     }
+   }
+
+   React.useEffect(()=>{
+     getProfile()
+   },[])
     return (
       
               <div>
@@ -8,7 +23,18 @@ const Homepage = () => {
           {/* Main jumbotron for a primary marketing message or call to action */}
           <div className="jumbotron">
             <div className="container">
-              <h1 className="display-3">Hello, world!      <FaGithubAlt color="skyblue" size="2em"/></h1>
+              <h1 className="display-3">Hello, world!   {
+              userStore.profile ?(
+              <span className="nav-text">{userStore.profile.name} 
+              </span>
+            ):(
+              <>
+            
+              </>
+            )
+
+          }
+    <FaGithubAlt color="skyblue" size="1em"/></h1>
               <p>
                 This is a template for a simple marketing or informational
                 website. It includes a large callout called a jumbotron and

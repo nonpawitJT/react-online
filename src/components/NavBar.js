@@ -2,18 +2,21 @@ import React from "react";
 import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from "react-bootstrap"
 import {UserStoreContext} from '../context/UserContext';
 import { NavLink, useHistory } from "react-router-dom"
-import {useSelector} from 'react-redux'
+import {useSelector,useDispatch} from 'react-redux'
+import { updateProfile } from "../redux/actions/authAction";
 const NavBar = () => {
   const history = useHistory()
-  const userStore = React.useContext(UserStoreContext)
+  // const userStore = React.useContext(UserStoreContext)
   const profileRedux = useSelector((state)=>state.authReducer.profile)
+  const dispatch = useDispatch()
   // const [profile,setProfile]= React.useState(null)
   const getProfile =() =>{
   //   localStorage.getItem('profile')
     const profileValue = JSON.parse(localStorage.getItem('profile'))
      if(profileValue){
   //     setProfile(profileValue)
-    userStore.updateProfile(profileValue)
+    // userStore.updateProfile(profileValue)
+    dispatch(updateProfile(profileValue))
      }
    }
 
@@ -50,12 +53,12 @@ const NavBar = () => {
             </NavDropdown>
 
             <NavLink className="nav-link" activeClassName="active" to="/upload" >Upload</NavLink>
-            <NavLink className="nav-link" activeClassName="active" to="/member" >Member {profileRedux.name}</NavLink>
+            <NavLink className="nav-link" activeClassName="active" to="/member" >Member </NavLink>
           </Nav>
        
           {
-              userStore.profile ?(
-              <span className="nav-text">Welcome {userStore.profile.name} 
+              profileRedux ?(
+              <span className="nav-text">Welcome {profileRedux.name} 
               <button className="btn btn-danger ml-2" onClick={logout}>Logout</button></span>
 
             ):(

@@ -8,6 +8,7 @@ const NavBar = () => {
   const history = useHistory()
   // const userStore = React.useContext(UserStoreContext)
   const profileRedux = useSelector((state)=>state.authReducer.profile)
+  const total = useSelector((state) => state.cartReducer.total)
   const dispatch = useDispatch()
   // const [profile,setProfile]= React.useState(null)
   const getProfile =() =>{
@@ -40,6 +41,7 @@ const NavBar = () => {
             {/* <Nav.Link href="#home">Home</Nav.Link> */}
             <NavLink className="nav-link" activeClassName="active" to="/" exact>Home</NavLink>
             <NavLink className="nav-link" activeClassName="active" to="/product" >Product</NavLink>
+            <NavLink className="nav-link" activeClassName="active" to="/cart" >Cart {total} Item(s)</NavLink>
             <NavLink className="nav-link" activeClassName="active" to="/detail" >Detail</NavLink>
             <NavLink className="nav-link" activeClassName="active" to="/about" >About</NavLink>
             <NavLink className="nav-link" activeClassName="active" to="/contactus" >Contactus</NavLink>
